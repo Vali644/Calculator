@@ -6,7 +6,7 @@ const calculator = {
     firstNumber: undefined,
     operand: undefined,
     secondNumber: undefined,
-    operate: (a, b, operator) => {
+    operate (a, b, operator) {
         switch (operator) {
             case "+":
                 return this.add(a, b);
