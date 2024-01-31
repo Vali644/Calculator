@@ -1,5 +1,44 @@
 * {
     margin: 0;
     padding: 0;
-    border: solid blue;
+    border:1px solid blue;
+}
+
+#calc-body {
+    display: flex;
+    height: 540px;
+    width: 360px;
+    flex-direction: column;
+}
+
+.button {
+    height: 90px;
+}
+
+#screen {
+    height: 90px;
+    display: flex;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+#top {
+    display: flex;
+}
+
+#main-body {
+    display: flex;
+}
+
+#numbers-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#numbers {
+    display: flex;
+    flex-wrap: wrap;
 }
