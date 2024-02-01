@@ -17,5 +17,18 @@ const calculator = {
             case "/":
                 return this.divide(a, b);
         }
+    },
+    display: (topN, bottomN, operand) => {
+        document.getElementById("top-number").innerText = topN;
+        document.getElementById("bottom-number").innerText = bottomN;
+        document.getElementById("operation").innerText = operand;
+    },
+    input (number) {
+        if (this.firstNumber === undefined) {
+            if (this.firstNumber === undefined) {
+                this.firstNumber = "";
+            }
+
+        }
     }
 }

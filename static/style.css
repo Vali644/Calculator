@@ -27,23 +27,47 @@
 #screen {
     height: 90px;
     display: flex;
-    flex-direction: column;
     align-items: flex-end;
     justify-content: space-around;
     background-color: rgb(185, 185, 252);
     margin: 2.4px;
     flex: 0 0 16.6%;
-    padding-right: 20px;
+    padding-right: 10px;
+    justify-content: flex-end;
 }
 
-#current {
+#num {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#operation {
+    display: flex;
     font-size: 40px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 87.5px;
+
 }
 
-#history {
-    font-size: 20px;
+#bottom-number {
+    font-size: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+#top-number {
+    font-size: 30px;
     font-weight:bolder;
     color: rgb(49, 49, 49);
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: 6px;
 }
 
 #buttons {
@@ -81,10 +105,19 @@
     display: flex;
 }
 
-#clear,
 #equal{
     flex: 0 0 49%;
 }
+
+#clear,
+#divide {
+    flex: 0 0 24%;
+}
+
+#backspace {
+    flex: 0 0 23.7%;
+}
+
 
 .number {
     flex: 0 0 31.8%;
