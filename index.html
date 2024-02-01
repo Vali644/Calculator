@@ -12,8 +12,8 @@
     <div id="calc-body">
         <div id="screen">
             <div id="num">
-                <div id="top-number">4</div>
-                <div id="bottom-number">5</div>
+                <div id="top-number">0</div>
+                <div id="bottom-number">0</div>
             </div>
             <div id="operation">+</div>
         </div>
@@ -27,19 +27,19 @@
             <div id="main-body">
                 <div id="numbers-body">
                     <div id="numbers">
-                        <button id="seven" class="number button">7</button>
-                        <button id="eight" class="number button">8</button>
-                        <button id="nine" class="number button">9</button>
-                        <button id="four" class="number button">4</button>
-                        <button id="five" class="number button">5</button>
-                        <button id="six" class="number button">6</button>
-                        <button id="one" class="number button">1</button>
-                        <button id="two" class="number button">2</button>
-                        <button id="three" class="number button">3</button>
+                        <button id="seven" class="number button" onclick='calculator.input("7")'>7</button>
+                        <button id="eight" class="number button" onclick='calculator.input("8")'>8</button>
+                        <button id="nine" class="number button" onclick='calculator.input("9")'>9</button>
+                        <button id="four" class="number button"  onclick='calculator.input("4")'>4</button>
+                        <button id="five" class="number button" onclick='calculator.input("5")'>5</button>
+                        <button id="six" class="number button" onclick='calculator.input("6")'>6</button>
+                        <button id="one" class="number button" onclick='calculator.input("1")'>1</button>
+                        <button id="two" class="number button" onclick='calculator.input("2")'>2</button>
+                        <button id="three" class="number button" onclick='calculator.input("3")'>3</button>
                     </div>
                     <div id="bottom-numbers">
-                        <button id="zero" class="number button">0</button>
-                        <button id="comma" class="number button">,</button>
+                        <button id="zero" class="number button" onclick='calculator.input("0")'>0</button>
+                        <button id="comma" class="number button" onclick='calculator.input(".")'>.</button>
                     </div>
                 </div>
                 <div id="right-f-bar">
