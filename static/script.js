@@ -8,6 +8,7 @@ const calculator = {
     secondNumber: '0',
     isComma: false,
     toInput: 1,
+    iscommaPressent: false,
     operate (a, b, operator) {
         switch (operator) {
             case "+":
@@ -32,38 +33,31 @@ const calculator = {
         }
     },
     input (number, remove) {
+        let placeholder;
         if (this.toInput === 1) {
-            if (remove) {
-                if (this.firstNumber.length === 1 || this.firstNumber.length === 0) {
-                    this.firstNumber = '0';
-                } else {
-                    this.firstNumber = this.firstNumber.slice(0, -1);
-                }
+            placeholder = this.firstNumber;
+        } else {
+            placeholder = this.secondNumber;
+        }
+        if (remove) {
+            if (placeholder.length === 1 || placeholder.length === 0) {
+                placeholder = '0';
             } else {
-                if (this.firstNumber[0] === "0") {
-                    if (number !== "0") {
-                        this.firstNumber = number;
-                    }
-                } else {
-                    this.firstNumber = this.firstNumber + number;
-                }
+                placeholder = placeholder.slice(0, -1);
             }
         } else {
-            if (remove) {
-                if (this.secondNumber.length === 1 || this.secondNumber.length === 0) {
-                    this.secondNumber = '0';
-                } else {
-                    this.secondNumber = this.secondNumber.slice(0, -1);
+            if (placeholder[0] === "0") {
+                if (number !== "0") {
+                    placeholder = number;
                 }
             } else {
-                if (this.secondNumber[0] === "0") {
-                    if (number !== "0") {
-                    this.secondNumber = number;
-                }
-                } else {
-                    this.secondNumber = this.secondNumber + number;
-                }
+                placeholder = placeholder + number;
             }
+        }
+        if (this.toInput === 1) {
+            this.firstNumber = placeholder;
+        } else {
+            this.secondNumber = placeholder;
         }
         this.display(this.secondNumber, this.firstNumber, this.operand);
     },
