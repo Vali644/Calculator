@@ -6,9 +6,8 @@ const calculator = {
     firstNumber: '0',
     operand: '+',
     secondNumber: '0',
-    isComma: false,
     toInput: 1,
-    iscommaPressent: false,
+    isCommaPressent: false,
     operate (a, b, operator) {
         switch (operator) {
             case "+":
@@ -43,15 +42,32 @@ const calculator = {
             if (placeholder.length === 1 || placeholder.length === 0) {
                 placeholder = '0';
             } else {
+                if (this.isCommaPressent && placeholder[placeholder.length - 1] === ".") {
+                    this.isCommaPressent = false;
+                }
                 placeholder = placeholder.slice(0, -1);
             }
         } else {
             if (placeholder[0] === "0") {
                 if (number !== "0") {
-                    placeholder = number;
+                    if (number === "." && this.isCommaPressent === false) {
+                        placeholder = placeholder + number;
+                        this.isCommaPressent = true;
+                    } else if (this.isCommaPressent && number !== ".") {
+                        placeholder = placeholder + number;
+                    } else if (!this.isCommaPressent && number !== ".") {
+                        placeholder = number;
+                    }
+                    console.log(number + " " + placeholder[0])
                 }
             } else {
-                placeholder = placeholder + number;
+                if (number === "." && this.isCommaPressent == false) {
+                    placeholder = placeholder + number;
+                    this.isCommaPressent = true;
+                } else if (number !== ".") {
+                    placeholder = placeholder + number;
+                }
+                
             }
         }
         if (this.toInput === 1) {
