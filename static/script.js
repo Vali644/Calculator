@@ -5,7 +5,7 @@ const calculator = {
     divide: (a, b) => a / b,
     firstNumber: '0',
     operand: '',
-    secondNumber: '0',
+    secondNumber: '',
     toInput: 1,
     isCommaPressent: false,
     operate (a, b, operator) {
@@ -74,7 +74,11 @@ const calculator = {
     operatorInput (operator) {
         if (this.operand === "") {
             this.operand = operator;
-            this.secondNumber = this.firstNumber;
+            if (this.firstNumber[this.firstNumber.length - 1] === ".") {
+                this.secondNumber = this.firstNumber.slice(0, -1);
+            } else {
+                this.secondNumber = this.firstNumber;
+            }
             this.firstNumber = '0';
             if (this.isCommaPressent) {
                 this.isCommaPressent = false;
