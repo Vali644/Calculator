@@ -89,17 +89,35 @@ const calculator = {
                 this.isCommaPressent = false;
             }
             this.whatInput = 2;
+            this.canInput = true;
             this.display(this.firstNumber, '0', this.operand);
+        } else {
+            this.calculate(true);
+            this.operand = operator;
+            this.whatInput = 2;
+            this.canInput = true;
+            this.display(this.firstNumber, '0', this.operand)
         }
     },
-    result () {
-        if (this.secondNumber !== "") {
+    calculate (consecutive) {
+        if (this.secondNumber !== "" || this.firstNumber !== "") {
             this.isCommaPressent = false;
-            this.canInput = false;
-            let result = operate(this.firstNumber, this.secondNumber)
+            let result;
+            if (this.secondNumber === "") {
+                result = Number.parseFloat(this.operate(Number.parseFloat(this.firstNumber), Number.parseFloat(this.firstNumber), this.operand).toFixed(2));
+            } else {
+                result = Number.parseFloat(this.operate(Number.parseFloat(this.firstNumber), Number.parseFloat(this.secondNumber), this.operand).toFixed(2));
+            }
+            this.firstNumber = result + '';
+            this.secondNumber = '';
+            if (!consecutive) {
+                this.canInput = false;
+                this.operand = "";
+                this.display(this.secondNumber, this.firstNumber, this.operand)
+                console.log(result);
+            }
         }
     }
-
 }
 
 // REMINDER: Implement the ability to correctly use the comma(dot), and to correctly remove it
