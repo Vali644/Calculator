@@ -4,7 +4,7 @@ const calculator = {
     multiply: (a, b) => a * b,
     divide: (a, b) => a / b,
     firstNumber: '0',
-    operand: '+',
+    operand: '',
     secondNumber: '0',
     toInput: 1,
     isCommaPressent: false,
@@ -31,13 +31,8 @@ const calculator = {
             document.getElementById("operation").innerText = operand;
         }
     },
-    input (number, remove) {
-        let placeholder;
-        if (this.toInput === 1) {
-            placeholder = this.firstNumber;
-        } else {
-            placeholder = this.secondNumber;
-        }
+    numberInput (number, remove) {
+        let placeholder = this.toInput == 1 ? this.firstNumber : this.secondNumber;
         if (remove) {
             if (placeholder.length === 1 || placeholder.length === 0) {
                 placeholder = '0';
@@ -58,7 +53,6 @@ const calculator = {
                     } else if (!this.isCommaPressent && number !== ".") {
                         placeholder = number;
                     }
-                    console.log(number + " " + placeholder[0])
                 }
             } else {
                 if (number === "." && this.isCommaPressent == false) {
@@ -76,6 +70,17 @@ const calculator = {
             this.secondNumber = placeholder;
         }
         this.display(this.secondNumber, this.firstNumber, this.operand);
+    },
+    operatorInput (operator) {
+        if (this.operand === "") {
+            this.operand = operator;
+            this.secondNumber = this.firstNumber;
+            this.firstNumber = '0';
+            if (this.isCommaPressent) {
+                this.isCommaPressent = false;
+            }
+            this.display(this.secondNumber, this.firstNumber, this.operand);
+        }
     },
 
 }

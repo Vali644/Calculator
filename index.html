@@ -15,36 +15,36 @@
                 <div id="top-number">0</div>
                 <div id="bottom-number">0</div>
             </div>
-            <div id="operation">+</div>
+            <div id="operation"></div>
         </div>
         <div id="buttons">
             <div id="top">
                 <button class="button function" id="clear">C</button>
-                <button class="button function" id="backspace" onclick='calculator.input("", true)'>B</button>
-                <button class="button function" id="divide">/</button>
-                <button class="button function" id="multiply">*</button>
+                <button class="button function" id="backspace" onclick='calculator.numberInput("", true)'>B</button>
+                <button class="button function" id="divide" onclick="calculator.operatorInput('/')">/</button>
+                <button class="button function" id="multiply" onclick="calculator.operatorInput('*')">*</button>
             </div>
             <div id="main-body">
                 <div id="numbers-body">
                     <div id="numbers">
-                        <button id="seven" class="number button" onclick='calculator.input("7")'>7</button>
-                        <button id="eight" class="number button" onclick='calculator.input("8")'>8</button>
-                        <button id="nine" class="number button" onclick='calculator.input("9")'>9</button>
-                        <button id="four" class="number button"  onclick='calculator.input("4")'>4</button>
-                        <button id="five" class="number button" onclick='calculator.input("5")'>5</button>
-                        <button id="six" class="number button" onclick='calculator.input("6")'>6</button>
-                        <button id="one" class="number button" onclick='calculator.input("1")'>1</button>
-                        <button id="two" class="number button" onclick='calculator.input("2")'>2</button>
-                        <button id="three" class="number button" onclick='calculator.input("3")'>3</button>
+                        <button id="seven" class="number button" onclick='calculator.numberInput("7")'>7</button>
+                        <button id="eight" class="number button" onclick='calculator.numberInput("8")'>8</button>
+                        <button id="nine" class="number button" onclick='calculator.numberInput("9")'>9</button>
+                        <button id="four" class="number button"  onclick='calculator.numberInput("4")'>4</button>
+                        <button id="five" class="number button" onclick='calculator.numberInput("5")'>5</button>
+                        <button id="six" class="number button" onclick='calculator.numberInput("6")'>6</button>
+                        <button id="one" class="number button" onclick='calculator.numberInput("1")'>1</button>
+                        <button id="two" class="number button" onclick='calculator.numberInput("2")'>2</button>
+                        <button id="three" class="number button" onclick='calculator.numberInput("3")'>3</button>
                     </div>
                     <div id="bottom-numbers">
-                        <button id="zero" class="number button" onclick='calculator.input("0")'>0</button>
-                        <button id="comma" class="number button" onclick='calculator.input(".")'>.</button>
+                        <button id="zero" class="number button" onclick='calculator.numberInput("0")'>0</button>
+                        <button id="comma" class="number button" onclick='calculator.numberInput(".")'>.</button>
                     </div>
                 </div>
                 <div id="right-f-bar">
-                    <button class="button function" id="substract">-</button>
-                    <button class="button function" id="add">+</button>
+                    <button class="button function" id="substract" onclick="calculator.operatorInput('-')">-</button>
+                    <button class="button function" id="add" onclick="calculator.operatorInput('+')">+</button>
                     <button class="button function" id="equal">=</button>
                 </div>
             </div>
