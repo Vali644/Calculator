@@ -32,42 +32,36 @@ const calculator = {
         }
     },
     numberInput (number, remove) {
-        let placeholder = this.toInput == 1 ? this.firstNumber : this.secondNumber;
         if (remove) {
-            if (placeholder.length === 1 || placeholder.length === 0) {
-                placeholder = '0';
+            if (this.firstNumber.length === 1 || this.firstNumber.length === 0) {
+                this.firstNumber = '0';
             } else {
-                if (this.isCommaPressent && placeholder[placeholder.length - 1] === ".") {
+                if (this.isCommaPressent && this.firstNumber[this.firstNumber.length - 1] === ".") {
                     this.isCommaPressent = false;
                 }
-                placeholder = placeholder.slice(0, -1);
+                this.firstNumber = this.firstNumber.slice(0, -1);
             }
         } else {
-            if (placeholder[0] === "0") {
+            if (this.firstNumber[0] === "0") {
                 if (number !== "0") {
                     if (number === "." && this.isCommaPressent === false) {
-                        placeholder = placeholder + number;
+                        this.firstNumber = this.firstNumber + number;
                         this.isCommaPressent = true;
                     } else if (this.isCommaPressent && number !== ".") {
-                        placeholder = placeholder + number;
+                        this.firstNumber = this.firstNumber + number;
                     } else if (!this.isCommaPressent && number !== ".") {
-                        placeholder = number;
+                        this.firstNumber = number;
                     }
                 }
             } else {
                 if (number === "." && this.isCommaPressent == false) {
-                    placeholder = placeholder + number;
+                    this.firstNumber = this.firstNumber + number;
                     this.isCommaPressent = true;
                 } else if (number !== ".") {
-                    placeholder = placeholder + number;
+                    this.firstNumber = this.firstNumber + number;
                 }
                 
             }
-        }
-        if (this.toInput === 1) {
-            this.firstNumber = placeholder;
-        } else {
-            this.secondNumber = placeholder;
         }
         this.display(this.secondNumber, this.firstNumber, this.operand);
     },
@@ -86,6 +80,11 @@ const calculator = {
             this.display(this.secondNumber, this.firstNumber, this.operand);
         }
     },
+    result () {
+        if (this.secondNumber !== "") {
+
+        }
+    }
 
 }
 
