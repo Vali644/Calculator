@@ -6,6 +6,7 @@ const calculator = {
     firstNumber: '0',
     operand: '',
     secondNumber: '',
+    whatInput: 1,
     canInput: true,
     isCommaPressent: false,
     operate (a, b, operator) {
@@ -33,38 +34,48 @@ const calculator = {
     },
     numberInput (number, remove) {
         if (this.canInput) {
+            let placeholder = this.whatInput === 1 ? this.firstNumber : this.secondNumber;
             if (remove) {
-                if (this.firstNumber.length === 1 || this.firstNumber.length === 0) {
-                    this.firstNumber = '0';
+                if (placeholder.length === 1 || placeholder.length === 0) {
+                    placeholder = '0';
                 } else {
-                    if (this.isCommaPressent && this.firstNumber[this.firstNumber.length - 1] === ".") {
+                    if (this.isCommaPressent && placeholder[placeholder.length - 1] === ".") {
                         this.isCommaPressent = false;
                     }
-                    this.firstNumber = this.firstNumber.slice(0, -1);
+                    placeholder = placeholder.slice(0, -1);
                 }
             } else {
-                if (this.firstNumber[0] === "0") {
+                if (placeholder === "") {
+                    placeholder = '0';
+                } 
+                if (placeholder[0] === "0") {
                     if (number !== "0") {
                         if (number === "." && this.isCommaPressent === false) {
-                            this.firstNumber = this.firstNumber + number;
+                            placeholder = placeholder + number;
                             this.isCommaPressent = true;
                         } else if (this.isCommaPressent && number !== ".") {
-                            this.firstNumber = this.firstNumber + number;
+                            placeholder = placeholder + number;
                         } else if (!this.isCommaPressent && number !== ".") {
-                            this.firstNumber = number;
+                            placeholder = number;
                         }
                     }
                 } else {
                     if (number === "." && this.isCommaPressent == false) {
-                        this.firstNumber = this.firstNumber + number;
+                        placeholder = placeholder + number;
                         this.isCommaPressent = true;
                     } else if (number !== ".") {
-                        this.firstNumber = this.firstNumber + number;
+                        placeholder = placeholder + number;
                     }
                     
                 }
             }
-            this.display(this.secondNumber, this.firstNumber, this.operand);
+            if (this.whatInput === 1) {
+                this.firstNumber = placeholder;
+                this.display(this.secondNumber, this.firstNumber, this.operand);
+            } else {
+                this.secondNumber = placeholder;
+                this.display(this.firstNumber, this.secondNumber, this.operand);
+            }
         }
 
     },
@@ -72,15 +83,13 @@ const calculator = {
         if (this.operand === "") {
             this.operand = operator;
             if (this.firstNumber[this.firstNumber.length - 1] === ".") {
-                this.secondNumber = this.firstNumber.slice(0, -1);
-            } else {
-                this.secondNumber = this.firstNumber;
-            }
-            this.firstNumber = '0';
+                this.firstNumber = this.firstNumber.slice(0, -1);
+            } 
             if (this.isCommaPressent) {
                 this.isCommaPressent = false;
             }
-            this.display(this.secondNumber, this.firstNumber, this.operand);
+            this.whatInput = 2;
+            this.display(this.firstNumber, '0', this.operand);
         }
     },
     result () {
